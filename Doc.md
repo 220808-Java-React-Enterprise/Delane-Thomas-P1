@@ -69,3 +69,10 @@
     -servlets 
   - Files:
     - PlaceHolderException
+
+### August 29th Day 5
+- Met with partner merged branch to main.
+- Started looking into connections.
+- Recived error when trying to deploy project.  Looking into it.
+  - [ERROR] Failed to execute goal org.apache.maven.plugins:maven-war-plugin:2.2:war (default-war) on project Delane-Thomas-P1: Error assembling WAR: webxml attribute is required (or pre-existing WEB-INF/web.xml if executing in update mode) -> [Help 1]
+ 
