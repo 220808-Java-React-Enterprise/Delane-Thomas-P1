@@ -1,9 +1,12 @@
 package com.revature.reimbursementapi.services;
 
 import com.revature.reimbursementapi.daos.ERS_ReimbursementDAO;
+import com.revature.reimbursementapi.dtos.requests.NewReimbursementRequest;
 import com.revature.reimbursementapi.models.ERS_Reimbursement;
 import com.revature.reimbursementapi.util.customexceptions.PlaceHolderException;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -30,11 +33,14 @@ public class ERS_ReimbursementService {
         return true;
     }
 //Next TODO: change over from model type to request type.
-    public void saveReimbursementRequest(ERS_Reimbursement reimRequest) {
+    public void saveReimbursementRequest(NewReimbursementRequest reimbRequest) {
         //TODO: call verify form complete
+        
+        //Converting request class to model class
+        ERS_Reimbursement newReimbRequest = new ERS_Reimbursement(UUID.randomUUID(), reimbRequest.getAmount(), Timestamp.valueOf(LocalDateTime.now()), null, reimbRequest.getDescription(), reimbRequest.getReceipt(), reimbRequest.getPayment_id(), UUID.fromString(reimbRequest.getAuthor_id()), null, "PENDING", reimbRequest.getType_id());
 
         //reimbRequest.setStatus_id("PENDING_ID"); //Fill in once ids are decided.
-        reimDAO.save(reimRequest);
+        reimDAO.save(newReimbRequest);
 
     }
 

@@ -26,7 +26,7 @@ public class ContextLoadListener implements ServletContextListener {
         ServletContext context = sce.getServletContext();
 
         //Fourth is mapping the servlets?
-        context.addServlet("ReimbursementServlet", reimbursementServlet).addMapping("/reimbursement");
+        context.addServlet("ReimbursementServlet", reimbursementServlet).addMapping("/post-reimb-request");
 
 
         //Leaving this to see what it does.

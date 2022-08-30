@@ -86,6 +86,7 @@
 - Committed and pushed to my branch to create a bkp while looking into catalina run command. (Resolved thanks to partner input, used the startup.bat file with windows cmd start)
 - Edited ContextLoadListener, added first test servlet and checked connection.
 - Created NewReimbursementRequest in dto request. Tested in postman with a simplified post request. Test successful can move on to other verbs. 
+- Attempted DB connection with post request, data not persisting, data not being written to DB. Looking into it. 
 - *Added;*
   - Directories:
   - Files:

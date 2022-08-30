@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.UUID;
 
 public class ReimbursementServlet extends HttpServlet {
     private final ObjectMapper objectMapper;
@@ -30,7 +31,11 @@ public class ReimbursementServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         NewReimbursementRequest newReimbursementRequest = objectMapper.readValue(req.getInputStream(), NewReimbursementRequest.class);
-        resp.getWriter().write(objectMapper.writeValueAsString(newReimbursementRequest));
+        //??
+        reimbursementService.saveReimbursementRequest(newReimbursementRequest);
+        resp.getWriter().write(objectMapper.writeValueAsString(newReimbursementRequest) );
+
+
     }
 
 

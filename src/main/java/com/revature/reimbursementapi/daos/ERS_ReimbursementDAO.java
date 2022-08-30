@@ -218,6 +218,7 @@ public class ERS_ReimbursementDAO implements CRUDDAO<ERS_Reimbursement> {
     }
 
 
+    //TODO: remove resolved and resolver_id from save and and to update instead. change the name of this update method to reflect those changes.
     public void updateStatus(UUID reimb_id, String status_id) {
         try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
             PreparedStatement ps = conn.prepareStatement("UPDATE ers_reimbursements SET status_id = ? WHERE reimb_id = ?");
