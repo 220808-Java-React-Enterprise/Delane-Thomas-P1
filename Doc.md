@@ -63,7 +63,6 @@
 - Started work on reimbursement type. 
 - Changed reimb-id, author-id, and resolver-id types to UUID. 
 - Committed and pushed to my branch. 
-
 - *Added;*
   - Directories:
     -servlets 
@@ -85,9 +84,16 @@
 - Changed groupid in the pom.xml file to com.revature
 - $CATALINA_HOME\bin\catalina.sh run command not working for me. Looking into it.
 - Committed and pushed to my branch to create a bkp while looking into catalina run command. (Resolved thanks to partner input, used the startup.bat file with windows cmd start)
--  Edited ContextLoadListener, added first test servlet and checked connection.
+- Edited ContextLoadListener, added first test servlet and checked connection.
+- Created NewReimbursementRequest in dto request. Tested in postman with a simplified post request. Test successful can move on to other verbs. 
 - *Added;*
   - Directories:
   - Files:
     - ContextLoadListener
+    - ReimbursementServlet 
+    - NewReimbursementRequest 
+    - Reimbursement request bodies (Not pushed just a local back up.)  
+- *Removed;*
+  - Files:
+    - TestServlet (Basic servlet test complete no longer needed.) 
  
