@@ -69,12 +69,23 @@
     -servlets 
   - Files:
     - PlaceHolderException
+    - TestServlet 
 
 ### August 29th Day 5
 - Met with partner merged branch to main.
 - Started looking into connections.
-- Recived error when trying to deploy project.  Looking into it.
+- Received error when trying to deploy project.  Looking into it.
   - [ERROR] Failed to execute goal org.apache.maven.plugins:maven-war-plugin:2.2:war (default-war) on project Delane-Thomas-P1: Error assembling WAR: webxml attribute is required (or pre-existing WEB-INF/web.xml if executing in update mode) -> [Help 1]
 - Error solved changed webapps to webapp. The default folder could not be found due to the misspelling.
 - Problem logging into localhost:8080 manager, name and password not accepted, Working on it.
+
+### August 30th Day 6 
+- Still working on http login problem. tried using maven-tomcat username received a 403 error. SOLVED realized I used the wrong username at first. (I used the DB username not the websever username.)
+- Added *.DS_Store to gitignore.
+- Changed groupid in the pom.xml file to com.revature
+-
+- *Added;*
+  - Directories:
+  - Files:
+    - ContextLoadListener
  
