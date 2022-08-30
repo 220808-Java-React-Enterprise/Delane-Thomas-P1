@@ -1,9 +1,7 @@
 package com.revature.reimbursementapi.dtos.requests;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
-import java.util.UUID;
-
+//STUB REQUEST FOR TESTING!
 public class NewReimbursementRequest {
     private BigDecimal amount;
     private String description;
