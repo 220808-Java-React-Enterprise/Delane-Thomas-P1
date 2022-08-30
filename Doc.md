@@ -1,4 +1,4 @@
-# Develpment documentation delane-branch.
+# Development documentation delane-branch.
 
 ### August 25th Day 1;
 - Reviewed project details.
@@ -83,7 +83,9 @@
 - Still working on http login problem. tried using maven-tomcat username received a 403 error. SOLVED realized I used the wrong username at first. (I used the DB username not the websever username.)
 - Added *.DS_Store to gitignore.
 - Changed groupid in the pom.xml file to com.revature
--
+- $CATALINA_HOME\bin\catalina.sh run command not working for me. Looking into it.
+- Committed and pushed to my branch to create a bkp while looking into catalina run command. (Resolved thanks to partner input, used the startup.bat file with windows cmd start)
+-  Edited ContextLoadListener, added first test servlet and checked connection.
 - *Added;*
   - Directories:
   - Files:
