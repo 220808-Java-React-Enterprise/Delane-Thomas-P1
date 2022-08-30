@@ -1,7 +1,9 @@
 package com.revature.reimbursementapi.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.reimbursementapi.servlets.TestServlet;
+import com.revature.reimbursementapi.daos.ERS_ReimbursementDAO;
+import com.revature.reimbursementapi.services.ERS_ReimbursementService;
+import com.revature.reimbursementapi.servlets.ReimbursementServlet;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -18,13 +20,13 @@ public class ContextLoadListener implements ServletContextListener {
         ObjectMapper mapper = new ObjectMapper();
 
         //Second is initializing any and all servlets.
-        TestServlet testServlet = new TestServlet();
+        ReimbursementServlet reimbursementServlet = new ReimbursementServlet(mapper, new ERS_ReimbursementService(new ERS_ReimbursementDAO()));
 
         //Third is initializing a ServletContext object. NOTE: to lookup.
         ServletContext context = sce.getServletContext();
 
         //Fourth is mapping the servlets?
-        context.addServlet("TestServlet", testServlet).addMapping("/test");
+        context.addServlet("ReimbursementServlet", reimbursementServlet).addMapping("/reimbursement");
 
 
         //Leaving this to see what it does.
@@ -34,7 +36,7 @@ public class ContextLoadListener implements ServletContextListener {
     @Override   //This destroys the program on every exit?
     public void contextDestroyed(ServletContextEvent sce) {
 
-        System.out.println("Shutingdown the application... Thank you for using Reimbursement Api.");
+        System.out.println("Shutting down the application... Thank you for using Reimbursement Api.");
 
         //Leaving this to see what it does.
         ServletContextListener.super.contextDestroyed(sce);

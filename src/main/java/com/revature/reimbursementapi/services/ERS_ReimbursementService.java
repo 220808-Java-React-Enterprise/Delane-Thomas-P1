@@ -29,8 +29,10 @@ public class ERS_ReimbursementService {
 
         return true;
     }
-
+//Next TODO: change over from model type to request type.
     public void saveReimbursementRequest(ERS_Reimbursement reimRequest) {
+        //TODO: call verify form complete
+
         //reimbRequest.setStatus_id("PENDING_ID"); //Fill in once ids are decided.
         reimDAO.save(reimRequest);
 
