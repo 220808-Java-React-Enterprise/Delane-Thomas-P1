@@ -1,17 +1,18 @@
 package com.revature.reimbursementapi.models;
 
 import java.math.BigDecimal;
+import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.UUID;
 
 public class ERS_Reimbursement {
     //datafields
-    private UUID reimb_Id;
+    private UUID reimb_id;
     private BigDecimal amount;
     private Timestamp submitted;
     private Timestamp resolved;
     private String description;
-    private String receipt;     //using string as a temporay placeholder until a matching datatype is found.
+    private Blob receipt;     //using string as a temporay placeholder until a matching datatype is found.
     private String payment_id;
     private UUID author_id;
     private UUID resolver_id;
@@ -22,8 +23,8 @@ public class ERS_Reimbursement {
 
     public ERS_Reimbursement() {}
 
-    public ERS_Reimbursement(UUID reimb_Id, BigDecimal amount, Timestamp submitted, Timestamp resolved, String description, String receipt, String payment_id, UUID author_id, UUID resolver_id, String status_id, String type_id) {
-        this.reimb_Id = reimb_Id;
+    public ERS_Reimbursement(UUID reimb_id, BigDecimal amount, Timestamp submitted, Timestamp resolved, String description, Blob receipt, String payment_id, UUID author_id, UUID resolver_id, String status_id, String type_id) {
+        this.reimb_id = reimb_id;
         this.amount = amount;
         this.submitted = submitted;
         this.resolved = resolved;
@@ -37,12 +38,12 @@ public class ERS_Reimbursement {
     }
 
     //getters and setters
-    public UUID getReimb_Id() {
-        return reimb_Id;
+    public UUID getReimb_id() {
+        return reimb_id;
     }
 
-    public void setReimb_Id(UUID reimb_Id) {
-        this.reimb_Id = reimb_Id;
+    public void setReimb_id(UUID reimb_id) {
+        this.reimb_id = reimb_id;
     }
 
     public BigDecimal getAmount() {
@@ -77,11 +78,11 @@ public class ERS_Reimbursement {
         this.description = description;
     }
 
-    public String getReceipt() {
+    public Blob getReceipt() {
         return receipt;
     }
 
-    public void setReceipt(String receipt) {
+    public void setReceipt(Blob receipt) {
         this.receipt = receipt;
     }
 
@@ -130,7 +131,7 @@ public class ERS_Reimbursement {
     @Override
     public String toString() {
         return "ERS_Reimbursments{" +
-                "reimb_Id='" + reimb_Id + '\'' +
+                "reimb_Id='" + reimb_id + '\'' +
                 ", amount=" + amount +
                 ", submitted=" + submitted +
                 ", resolved=" + resolved +

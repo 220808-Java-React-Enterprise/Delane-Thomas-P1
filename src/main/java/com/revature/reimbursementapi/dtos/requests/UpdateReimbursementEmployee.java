@@ -1,39 +1,45 @@
 package com.revature.reimbursementapi.dtos.requests;
 
+import org.postgresql.largeobject.BlobInputStream;
+
 import java.math.BigDecimal;
 import java.sql.Blob;
+import java.sql.Timestamp;
+import java.util.UUID;
 
-public class NewReimbursementRequest {
-    private Double amount;
+public class UpdateReimbursementEmployee {
+    //datafields
+    private String reimb_id;
+    private double amount;
     private String description;
-    private Blob  receipt;
+    private Blob receipt;     //using string as a temporary placeholder until a matching datatype is found.
     private String payment_id;
-    private String author_id;
     private String type_id;
 
-    public NewReimbursementRequest() {
-    }
+    public UpdateReimbursementEmployee() {}
 
-    public NewReimbursementRequest(Double amount, String description, Blob receipt, String payment_id, String author_id, String type_id) {
+    public UpdateReimbursementEmployee(String reimb_id, double amount, String description, Blob receipt, String payment_id, String type_id) {
+        this.reimb_id = reimb_id;
         this.amount = amount;
         this.description = description;
         this.receipt = receipt;
         this.payment_id = payment_id;
-        this.author_id = author_id;
         this.type_id = type_id;
     }
 
-    public NewReimbursementRequest(Double amount, String description) {
-        this.amount = amount;
-        this.description = description;
-
+    public String getReimb_id() {
+        return reimb_id;
     }
 
-    public Double getAmount() {
+    public void setReimb_id(String reimb_id) {
+        this.reimb_id = reimb_id;
+    }
+
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -61,14 +67,6 @@ public class NewReimbursementRequest {
         this.payment_id = payment_id;
     }
 
-    public String getAuthor_id() {
-        return author_id;
-    }
-
-    public void setAuthor_id(String author_id) {
-        this.author_id = author_id;
-    }
-
     public String getType_id() {
         return type_id;
     }
@@ -79,12 +77,12 @@ public class NewReimbursementRequest {
 
     @Override
     public String toString() {
-        return "NewReimbursementRequest{" +
-                "amount=" + amount +
+        return "UpdateReimbursementEmployee{" +
+                "reimb_id='" + reimb_id + '\'' +
+                ", amount=" + amount +
                 ", description='" + description + '\'' +
-                ", receipt='" + receipt + '\'' +
+                ", receipt=" + receipt +
                 ", payment_id='" + payment_id + '\'' +
-                ", author_id='" + author_id + '\'' +
                 ", type_id='" + type_id + '\'' +
                 '}';
     }

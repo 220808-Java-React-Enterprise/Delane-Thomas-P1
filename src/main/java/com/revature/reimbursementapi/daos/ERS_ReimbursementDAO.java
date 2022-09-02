@@ -14,14 +14,14 @@ public class ERS_ReimbursementDAO implements CRUDDAO<ERS_Reimbursement> {
     @Override
     public void save(ERS_Reimbursement obj) {
         try(Connection conn = ConnectionFactory.getInstance().getConnection()) {
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO ers_reimbursements (reimb_id, amount, submitted, resolved, description, receipt, payment_id, revsolver_id, status_id, type_id) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO ers_reimbursements (reimb_id, amount, submitted, resolved, description, receipt, payment_id, author_id,resolver_id, status_id, type_id) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )");
 
-            ps.setObject(1, obj.getReimb_Id());
+            ps.setObject(1, obj.getReimb_id());
             ps.setBigDecimal(2, obj.getAmount());
             ps.setTimestamp(3, obj.getSubmitted());
             ps.setTimestamp(4, obj.getResolved());
             ps.setString(5, obj.getDescription());
-            ps.setString(6, obj.getReceipt());  //temp needs to be changed to a proper datatype.
+            ps.setObject(6, obj.getReceipt());  //temp needs to be changed to a proper datatype.
             ps.setString(7, obj.getPayment_id());
             ps.setObject(8, obj.getAuthor_id());
             ps.setObject(9, obj.getResolver_id());
@@ -49,7 +49,7 @@ public class ERS_ReimbursementDAO implements CRUDDAO<ERS_Reimbursement> {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                ERS_Reimbursement reim = new ERS_Reimbursement(UUID.fromString(rs.getString("reimb_id")), rs.getBigDecimal("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), rs.getString("description"), rs.getString("receipt"), rs.getString("payment_id"), UUID.fromString(rs.getString("author_id")), UUID.fromString(rs.getString("resolver_id")), rs.getString("status_id"), rs.getString("type_id"));
+                ERS_Reimbursement reim = new ERS_Reimbursement(UUID.fromString(rs.getString("reimb_id")), rs.getBigDecimal("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), rs.getString("description"), rs.getBlob("receipt"), rs.getString("payment_id"), UUID.fromString(rs.getString("author_id")), UUID.fromString(rs.getString("resolver_id")), rs.getString("status_id"), rs.getString("type_id"));
                 list.add(reim);
 
             }
@@ -75,7 +75,7 @@ public class ERS_ReimbursementDAO implements CRUDDAO<ERS_Reimbursement> {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                ERS_Reimbursement reim = new ERS_Reimbursement(UUID.fromString(rs.getString("reimb_id")), rs.getBigDecimal("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), rs.getString("description"), rs.getString("receipt"), rs.getString("payment_id"), UUID.fromString(rs.getString("author_id")), UUID.fromString(rs.getString("resolver_id")), rs.getString("status_id"), rs.getString("type_id"));
+                ERS_Reimbursement reim = new ERS_Reimbursement(UUID.fromString(rs.getString("reimb_id")), rs.getBigDecimal("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), rs.getString("description"), rs.getBlob("receipt"), rs.getString("payment_id"), UUID.fromString(rs.getString("author_id")), UUID.fromString(rs.getString("resolver_id")), rs.getString("status_id"), rs.getString("type_id"));
                 list.add(reim);
 
             }
@@ -101,7 +101,7 @@ public class ERS_ReimbursementDAO implements CRUDDAO<ERS_Reimbursement> {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                ERS_Reimbursement reim = new ERS_Reimbursement(UUID.fromString(rs.getString("reimb_id")), rs.getBigDecimal("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), rs.getString("description"), rs.getString("receipt"), rs.getString("payment_id"), UUID.fromString(rs.getString("author_id")), UUID.fromString(rs.getString("resolver_id")), rs.getString("status_id"), rs.getString("type_id"));
+                ERS_Reimbursement reim = new ERS_Reimbursement(UUID.fromString(rs.getString("reimb_id")), rs.getBigDecimal("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), rs.getString("description"), rs.getBlob("receipt"), rs.getString("payment_id"), UUID.fromString(rs.getString("author_id")), UUID.fromString(rs.getString("resolver_id")), rs.getString("status_id"), rs.getString("type_id"));
                 list.add(reim);
 
             }
@@ -127,7 +127,7 @@ public class ERS_ReimbursementDAO implements CRUDDAO<ERS_Reimbursement> {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                ERS_Reimbursement reim = new ERS_Reimbursement(UUID.fromString(rs.getString("reimb_id")), rs.getBigDecimal("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), rs.getString("description"), rs.getString("receipt"), rs.getString("payment_id"), UUID.fromString(rs.getString("author_id")), UUID.fromString(rs.getString("resolver_id")), rs.getString("status_id"), rs.getString("type_id"));
+                ERS_Reimbursement reim = new ERS_Reimbursement(UUID.fromString(rs.getString("reimb_id")), rs.getBigDecimal("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), rs.getString("description"), rs.getBlob("receipt"), rs.getString("payment_id"), UUID.fromString(rs.getString("author_id")), UUID.fromString(rs.getString("resolver_id")), rs.getString("status_id"), rs.getString("type_id"));
                 list.add(reim);
 
             }
@@ -153,7 +153,7 @@ public class ERS_ReimbursementDAO implements CRUDDAO<ERS_Reimbursement> {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                ERS_Reimbursement reim = new ERS_Reimbursement( UUID.fromString(rs.getString("reimb_id")), rs.getBigDecimal("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), rs.getString("description"), rs.getString("receipt"), rs.getString("payment_id"), UUID.fromString(rs.getString("author_id")), UUID.fromString(rs.getString("resolver_id")), rs.getString("status_id"), rs.getString("type_id"));
+                ERS_Reimbursement reim = new ERS_Reimbursement( UUID.fromString(rs.getString("reimb_id")), rs.getBigDecimal("amount"), rs.getTimestamp("submitted"), rs.getTimestamp("resolved"), rs.getString("description"), rs.getBlob("receipt"), rs.getString("payment_id"), UUID.fromString(rs.getString("author_id")), UUID.fromString(rs.getString("resolver_id")), rs.getString("status_id"), rs.getString("type_id"));
                 list.add(reim);
 
             }
@@ -200,13 +200,13 @@ public class ERS_ReimbursementDAO implements CRUDDAO<ERS_Reimbursement> {
             ps.setTimestamp(2, obj.getSubmitted());
             ps.setTimestamp(3, obj.getResolved());
             ps.setString(4, obj.getDescription());
-            ps.setString(5, obj.getReceipt());  //temp needs to be changed to a proper datatype.
+            ps.setBlob(5, obj.getReceipt());  //temp needs to be changed to a proper datatype.
             ps.setString(6, obj.getPayment_id());
             ps.setObject(7, obj.getAuthor_id());
             ps.setObject(8, obj.getResolver_id());
             ps.setString(9, obj.getStatus_id());
             ps.setString(10, obj.getType_id());
-            ps.setObject(11, obj.getReimb_Id());
+            ps.setObject(11, obj.getReimb_id());
 
             ps.executeUpdate();
 

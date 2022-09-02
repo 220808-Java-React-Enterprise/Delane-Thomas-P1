@@ -98,3 +98,23 @@
   - Files:
     - TestServlet (Basic servlet test complete no longer needed.) 
  
+### August 31st Day 7
+- Post request still not persisting into the DB. Still looking into it.  
+  - Tested connection from service to DB in the IDE (intellij), connection works data saved. So problem must lie somewhere between the servlet class and the request. 
+- *Added;*
+  - Directories:
+  - Files:
+    - StatusChangeRequest (testing if another request type would persist.)
+    - TestMain (not added to git, used only yto test connection between program and DB.)
+
+### September 1st Day 8
+- Persistence problem still happening. Partner is having a similar issue.
+
+### September 2nd Day 9
+- Still no solution to request not reaching the DB issue. Decided to move on to other parts of the project and return to this later.
+- *Added;*
+  - Directories:
+  - Files:
+    - GetAllReimbursementsRequest
+    - GetReimbursementDetails
+    - UpdateReimbursementEmployee 

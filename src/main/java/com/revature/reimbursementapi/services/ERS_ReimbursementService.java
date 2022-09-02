@@ -5,9 +5,9 @@ import com.revature.reimbursementapi.dtos.requests.NewReimbursementRequest;
 import com.revature.reimbursementapi.models.ERS_Reimbursement;
 import com.revature.reimbursementapi.util.customexceptions.PlaceHolderException;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,7 +22,7 @@ public class ERS_ReimbursementService {
 
     public boolean verifyReimbursementFormCompletion(ERS_Reimbursement r) {
 
-        if(r.getReimb_Id() == null) { return false; }
+        if(r.getReimb_id() == null) { return false; }
         else if(r.getAmount() == null) { return false; }    //TODO: check what the default value of a bigdecimal is.
         else if(r.getSubmitted() == null) { return false; }
         else if(r.getDescription() == null) { return false; }
@@ -35,12 +35,16 @@ public class ERS_ReimbursementService {
 //Next TODO: change over from model type to request type.
     public void saveReimbursementRequest(NewReimbursementRequest reimbRequest) {
         //TODO: call verify form complete
-        
-        //Converting request class to model class
-        ERS_Reimbursement newReimbRequest = new ERS_Reimbursement(UUID.randomUUID(), reimbRequest.getAmount(), Timestamp.valueOf(LocalDateTime.now()), null, reimbRequest.getDescription(), reimbRequest.getReceipt(), reimbRequest.getPayment_id(), UUID.fromString(reimbRequest.getAuthor_id()), null, "PENDING", reimbRequest.getType_id());
+        try {
+            //Converting request class to model class
+            ERS_Reimbursement newReimbRequest = new ERS_Reimbursement(UUID.randomUUID(), BigDecimal.valueOf(reimbRequest.getAmount()), Timestamp.valueOf(LocalDateTime.now()), null, reimbRequest.getDescription(), reimbRequest.getReceipt(), reimbRequest.getPayment_id(), UUID.fromString(reimbRequest.getAuthor_id()), null, "P", reimbRequest.getType_id());
 
-        //reimbRequest.setStatus_id("PENDING_ID"); //Fill in once ids are decided.
-        reimDAO.save(newReimbRequest);
+            //reimbRequest.setStatus_id("PENDING_ID"); //Fill in once ids are decided.
+            reimDAO.save(newReimbRequest);
+        } catch(Exception e) {
+            e.printStackTrace();
+
+        }
 
     }
 
